@@ -1,7 +1,7 @@
 # math-parser-
 A recursive math parser
 
-This is math parser, that I have written to understand how a parser works.
+This is a command-line math parser, that I have written to understand how a parser works.
 
 Error handling is not to well and is not meant to be used in the real world. 
 It's for learning purpose. 
