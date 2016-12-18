@@ -33,16 +33,19 @@ Calculator handels this operations (spaces and tab will be ignored):
 Usage:
 
 You can use it interactivly like this (-i):
-$ ./calc -i
-$ << 5 * 2
-$ >> 10
 
-Or you can specify multiple expressions via a file (-f).
-$ ./calc -f my_excercises.txt
+    $ ./calc -i
+    $ << 5 * 2
+    $ >> 10
+
+Or you can specify multiple expressions via a file (-f):
+
+    $ ./calc -f my_excercises.txt
 
 Note only one expression each line.
 
-Also you can use it directly on command line type the operation (-d). Don't forget "".
-$ ./calc -d "5 * 2"
-$ >> 10
+Also you can use it directly on command line type the operation (-d). Don't forget "".:
+    
+    $ ./calc -d "5 * 2"
+    $ >> 10
 
