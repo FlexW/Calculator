@@ -1,4 +1,4 @@
-# c-math-parser
+# math-parser - A recursive command-line math parser
 A recursive math parser
 
 This is a command-line math parser that I have written to understand how a parser works.
