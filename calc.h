@@ -14,8 +14,6 @@
 
 #define calc_rad( x ) x * 0.017453292519943295
 
-#define HELPTEXT "This is the help. Not implimented yet."
-
 enum token_type {
   NONE = 0,
   NUM = 1,

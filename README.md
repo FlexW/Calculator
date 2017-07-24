@@ -11,6 +11,14 @@ However, you can improve it.
 
 To build it simple run the make script. Should be straightforward. I've only tested on GNU/Linux but should also run on Windows.
 
+```
+cd ~
+git clone https://github.com/FlexW/math-parser.git
+cd math-parser
+make
+sudo make install
+```
+
 Calculator handels this operations (spaces and tab will be ignored):
 
     Pi        Pi number
@@ -34,18 +42,18 @@ Usage:
 
 You can use it interactivly like this (-i):
 
-    $ ./calc -i
+    $ calc -i
     $ << 5 * 2
     $ >> 10
 
 Or you can specify multiple expressions via a file (-f):
 
-    $ ./calc -f my_excercises.txt
+    $ calc -f my_excercises.txt
 
 Note only one expression each line.
 
 Also you can use it directly on command line type the operation (-d). Don't forget "".:
     
-    $ ./calc -d "5 * 2"
+    $ calc -d "5 * 2"
     $ >> 10
 

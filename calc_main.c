@@ -18,28 +18,47 @@ int main ( int argc, const char *argv[] ) {
   for (int i = 1; i < argc; i++) {
     
     if (strcmp( "-h", argv[i] ) == 0  ||
-	strcmp( "--help", argv[i] ) == 0 ) {
+        strcmp( "--help", argv[i] ) == 0 ) {
       // TODO: Implement help.
-      printf( HELPTEXT );
+      printf( "Options:\n-i Starts interactive mode.\n\
+-f filename Opens a textfile and evaluate all expressions.\n\
+-d 4+4 Calculates the given expression.\n\n\
+Calculator handels this operations:\n\
+Pi        Pi number\n\
+e         Euler's number\n\
+sqrt()    Square root\n\
+cos()     Cosine\n\
+sin()     Sine\n\
+tan()     Tangent\n\ 
+lg()      Decimal logarithm\n\
+ln()      Natural logarithm\n\
+()        Brackets\n\
+||        Absolute value\n\
+!         Factorial\n\
+-         Unary minus\n\
+^         Exponent\n\
+mod()     Modulus divide\n\ 
+*, /      Multiply, Divide\n\
++, -      Add, Subtract\n" );
       exit( 0);
     }
 
     // File
     else if (strcmp( "-f", argv[i] ) == 0 ||
-	     strcmp( "--file", argv[i] ) == 0) {
+             strcmp( "--file", argv[i] ) == 0) {
       file = fopen ( argv[i + 1], "r" );
 
       while ( fgets ( buffer, 1024, file ) ) {
 
-	calculate( buffer, output );
-	printf( "%i >> %s\n", j, output );
-	j++;
+        calculate( buffer, output );
+        printf( "%i >> %s\n", j, output );
+        j++;
       }
     }
 
     // Direct mode
     else if (strcmp( "-d", argv[i] ) == 0 ||
-	     strcmp( "--direct", argv[i] ) == 0) {
+             strcmp( "--direct", argv[i] ) == 0) {
 
       calculate( argv[i + 1], output );
       printf( ">> %s\n", output );
@@ -49,7 +68,7 @@ int main ( int argc, const char *argv[] ) {
 
     //Interactive mode
     else if (strcmp( "-i", argv[i] ) == 0 ||
-	     strcmp( "--interactive", argv[i] ) == 0) {
+             strcmp( "--interactive", argv[i] ) == 0) {
       interactive_mode( );
     }
     else
