@@ -9,14 +9,14 @@ int main ( int argc, const char *argv[] ) {
   FILE *file;
   int j = 1;
   char *exp;
-  
+
   if (argc < 2) {
     printf( "Please type at least one option.\n\n-h for help\n");
     exit( 0 );
   }
 
   for (int i = 1; i < argc; i++) {
-    
+
     if (strcmp( "-h", argv[i] ) == 0  ||
         strcmp( "--help", argv[i] ) == 0 ) {
       // TODO: Implement help.
@@ -29,7 +29,7 @@ e         Euler's number\n\
 sqrt()    Square root\n\
 cos()     Cosine\n\
 sin()     Sine\n\
-tan()     Tangent\n\ 
+tan()     Tangent\n\
 lg()      Decimal logarithm\n\
 ln()      Natural logarithm\n\
 ()        Brackets\n\
@@ -37,7 +37,7 @@ ln()      Natural logarithm\n\
 !         Factorial\n\
 -         Unary minus\n\
 ^         Exponent\n\
-mod()     Modulus divide\n\ 
+mod()     Modulus divide\n\
 *, /      Multiply, Divide\n\
 +, -      Add, Subtract\n" );
       exit( 0);
@@ -80,7 +80,7 @@ mod()     Modulus divide\n\
 }
 
 void interactive_mode ( ) {
-  
+
   while (true) {
     printf( "<< " );
     if (NULL == fgets( buffer, 1024, stdin ))

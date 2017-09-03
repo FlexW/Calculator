@@ -27,12 +27,12 @@ table* ca_init(int num_of_args) {
         perror("table malloc error: ");
         exit(1);
     }
-    cmdarg *args = calloc(num_of_args, sizeof(cmdarg*));
+    cmdarg **args = calloc(num_of_args, sizeof(cmdarg*));
     if (args == NULL) {
         perror("args calloc error: ");
         exit(1);
     }
-    t->args = &args;
+    t->args = args;
     t->size = num_of_args;
     return t;
 }
@@ -73,7 +73,9 @@ static int hash(char* str, int table_size) {
     for (int i = 0; i < 26; i++) {
             sum += (('a' + i) * frequency[i]);
     }
-    return (sum % table_size);
+    int hash = (sum % table_size);
+    LOG_DEBUG("hash value: %d", hash);
+    return hash;
 }
 
 /**
@@ -82,11 +84,15 @@ static int hash(char* str, int table_size) {
  * @param t Table.
  */
 static void insert(cmdarg* element, table* t) {
+    LOG_DEBUG("insert key: %s, value: %s", element->arg, element->value);
     char* key = element->arg;
     int index = hash(key, t->size);
     cmdarg** start = t->args;
-    while (*(start + index) != 0)
+    while (*(start + index) != 0) {
+      //LOG_DEBUG("%d", *(start+index));
         index = (index + 1) % t->size;
+    }
+    LOG_DEBUG("insert at index: %d", index);
     *(start + index) = element;
 }
 
@@ -101,9 +107,10 @@ static cmdarg* search(char* key, table* t) {
     cmdarg** start = t->args;
     while (*(start + index) != 0 && strcmp((*(start + index))->arg, key))
         index = (index + 1) % t->size;
-    if (!strcmp((*(start + index))->arg, key))
-        return *(start + index);
-    return NULL;
+
+    if(*(start + index) == 0)
+        return NULL;
+    return *(start + index);
 }
 
 /**
@@ -116,7 +123,7 @@ static int eq_index(char* str) {
     int len = strlen(str);
     for (int i = 0; i < len; i++) {
         if(str[i] == '=') {
-            LOG_DEBUG("equal sign found");
+            LOG_DEBUG("equal sign found at %d", i);
             return i;
         }
     }
@@ -130,8 +137,11 @@ void ca_parse_args(int argc, char* argv[], table* t) {
         int eqi = eq_index(argv[i]);
         cmdarg* element;
         if (eqi != -1) {
-            argv[i][eqi] = 0;
+            LOG_DEBUG("Set %c sign to 0", argv[i][eqi]);
+            argv[i][eqi] = '\0';
+            LOG_DEBUG("key: %s, value: %s", argv[i], &argv[i][eqi + 1]);
             element = new_cmdarg(argv[i], &argv[i][eqi + 1]);
+            insert(element, t);
             continue;
         }
         element = new_cmdarg(argv[i], NULL);

@@ -9,7 +9,9 @@ int main(int argc, char *argv[]) {
         //  LOG_INFO("Start");
     table *t = ca_init(3);
     ca_parse_args(argc, argv, t);
-        //if (ca_is_arg("arg1", t))
-        // printf("%s is set.\n", "arg1");
+    if (ca_is_arg("arg1", t))
+        printf("%s is set.\n", "arg1");
+    if (ca_is_arg("arg2", t))
+        printf("%s is set.\n", "arg2");
     return 0;
 }
