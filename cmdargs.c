@@ -6,9 +6,9 @@
 #include "log.h"
 
 typedef struct cmdarg cmdarg;
-typedef struct table table;
+typedef struct ca_table ca_table;
 
-struct table {
+struct ca_table {
     int size;
     cmdarg** args;
 };
@@ -21,10 +21,10 @@ struct cmdarg {
     char* value; /**< Value of Command line arg. Can be set with '='. */
 };
 
-table* ca_init(int num_of_args) {
-    table *t = malloc(sizeof(*t));
+ca_table* ca_init(int num_of_args) {
+    ca_table *t = malloc(sizeof(*t));
     if (t == NULL) {
-        perror("table malloc error: ");
+        perror("ca_table malloc error: ");
         exit(1);
     }
     cmdarg **args = calloc(num_of_args, sizeof(cmdarg*));
@@ -83,7 +83,7 @@ static int hash(char* str, int table_size) {
  * @param element Element to insert.
  * @param t Table.
  */
-static void insert(cmdarg* element, table* t) {
+static void insert(cmdarg* element, ca_table* t) {
     LOG_DEBUG("insert key: %s, value: %s", element->arg, element->value);
     char* key = element->arg;
     int index = hash(key, t->size);
@@ -102,7 +102,7 @@ static void insert(cmdarg* element, table* t) {
  * @param t Table.
  * @returns Address of element. If not found NULL.
  */
-static cmdarg* search(char* key, table* t) {
+static cmdarg* search(char* key, ca_table* t) {
     int index = hash(key, t->size);
     cmdarg** start = t->args;
     while (*(start + index) != 0 && strcmp((*(start + index))->arg, key))
@@ -131,7 +131,7 @@ static int eq_index(char* str) {
     return -1;
 }
 
-void ca_parse_args(int argc, char* argv[], table* t) {
+void ca_parse_args(int argc, char* argv[], ca_table* t) {
     LOG_DEBUG("argc: %d", argc);
     for (int i = 1; i < argc; i++) {
         int eqi = eq_index(argv[i]);
@@ -149,13 +149,13 @@ void ca_parse_args(int argc, char* argv[], table* t) {
     }
 }
 
-bool ca_is_arg(char* arg, table* t) {
+bool ca_is_arg(char* arg, ca_table* t) {
     if (search(arg, t) != NULL)
         return true;
     return false;
 }
 
-char* ca_get_value(char *arg, table* t) {
+char* ca_get_value(char *arg, ca_table* t) {
     cmdarg *ca = search(arg, t);
     if (ca != NULL)
         return ca->value;

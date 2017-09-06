@@ -1,6 +1,16 @@
 /**
  * @file cmdargs.h
- * Parses command line options.
+ * @brief Parses command line options.
+ *
+ * Example Usage:
+ * @code
+ * ca_table* t = ca_init(NUMBER_OF_POSSIBLE_ARGS);
+ * ca_parse_args(argc, argv, t);
+ *
+ * if (ca_is_arg("file", t)) {
+ *     // Do something if option is set.
+ * }
+ * @endcode
  */
 
 #ifndef CMDARGS_H_
@@ -8,7 +18,7 @@
 
 #include <stdbool.h>
 
-typedef struct table table;
+typedef struct ca_table ca_table;
 
 /**
  * Initializes the parser.
@@ -16,7 +26,7 @@ typedef struct table table;
  * @param num_of_args Number of command line options.
  * @returns Table to operate on.
  */
-table* ca_init(int num_of_args);
+ca_table* ca_init(int num_of_args);
 
 /**
  * Parses the given command line arguments.
@@ -26,7 +36,7 @@ table* ca_init(int num_of_args);
  * @param argv Command line arguments.
  * @param t Table.
  */
-void ca_parse_args(int argc, char* argv[], table* t);
+void ca_parse_args(int argc, char* argv[], ca_table* t);
 
 /**
  * Checks if the given argument is set.
@@ -35,7 +45,7 @@ void ca_parse_args(int argc, char* argv[], table* t);
  * @param t Table.
  * @returns True if is set. False if not.
  */
-bool ca_is_arg(char* arg, table* t);
+bool ca_is_arg(char* arg, ca_table* t);
 
 /**
  * Gets the value for a Argument.
@@ -43,6 +53,6 @@ bool ca_is_arg(char* arg, table* t);
  * @param t Table.
  * @returns Value if set. NULL if not set.
  */
-char* ca_get_value(char* arg, table* t);
+char* ca_get_value(char* arg, ca_table* t);
 
 #endif
