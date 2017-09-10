@@ -4,7 +4,7 @@ A recursive math parser.
 This is a calculator that I have written to understand how a parser works.
 It's for learning purpose.
 
-To build it simple run the make script. Should be straightforward. I've tested only on Ubuntu.
+To build it, simple run the make script. Should be straightforward. I've tested only on Ubuntu.
 
 ```
 cd ~
