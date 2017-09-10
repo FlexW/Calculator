@@ -1,11 +1,10 @@
-# math-parser - A recursive command-line math parser
-A recursive math parser
+# Calculator
+A recursive math parser.
 
-This is a command-line math parser that I have written to understand how a parser works.
+This is a calculator that I have written to understand how a parser works.
 
 Error handling is not to well and is not meant to be used in the real world. 
-It's for learning purpose. 
-Also note that the datatype double that I used is not precise enough for a real calculator.
+It's for learning purpose.
 
 However, you can improve it.
 
