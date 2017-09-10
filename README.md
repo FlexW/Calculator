@@ -2,13 +2,9 @@
 A recursive math parser.
 
 This is a calculator that I have written to understand how a parser works.
-
-Error handling is not to well and is not meant to be used in the real world. 
 It's for learning purpose.
 
-However, you can improve it.
-
-To build it simple run the make script. Should be straightforward. I've only tested on GNU/Linux but should also run on Windows.
+To build it simple run the make script. Should be straightforward. I've tested only on Ubuntu.
 
 ```
 cd ~
@@ -18,7 +14,7 @@ make
 sudo make install
 ```
 
-Calculator handels this operations (spaces and tab will be ignored):
+Calculator handels this operations (spaces and tab and new lines will be ignored):
 
     Pi        Pi number
     e         Euler's number
