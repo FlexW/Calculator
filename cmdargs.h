@@ -1,6 +1,13 @@
 /**
  * @file cmdargs.h
- * Parses command line options.
+ * @brief Parses command line options.
+ * 
+ * Command line arguments should be seperated by spaces.
+ * It is possible to give an argument a value with '='.
+ * <br>
+ * Example:
+ * <br>
+ * ./my_app arg1 arg2=with_value arg2
  */
 
 #ifndef CMDARGS_H_
