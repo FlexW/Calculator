@@ -20,8 +20,7 @@ int main(int argc, const char *argv[]) {
   char *exp;
 
   if (argc < 2) {
-    printf("Please type at least one option.\n\n-h for help\n");
-    exit(0);
+    interactive_mode();
   }
 
   for (int i = 1; i < argc; i++) {
@@ -76,7 +75,8 @@ mod()     Modulus divide\n\
       interactive_mode();
     }
     else {
-      interactive_mode();
+      printf("Unkown option.\n-h for help.\n");
+      exit(1);
     }
   }
 
