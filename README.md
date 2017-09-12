@@ -8,8 +8,8 @@ To build it, simple run the make script. Should be straightforward. I've tested 
 
 ```
 cd ~
-git clone https://github.com/FlexW/math-parser.git
-cd math-parser
+git clone https://github.com/FlexW/calculator.git
+cd calculator
 make
 sudo make install
 ```
@@ -38,16 +38,16 @@ Usage:
 You can use it interactivly like this (-i):
 
     $ calc -i
-    $ << 5 * 2
-    $ >> 10
+    $ > 5 * 2
+    $ 10
 
 Or you can specify multiple expressions via a file (-f):
 
     $ calc -f my_excercises.txt
 
-Note only one expression each line.
+Note: Only one expression each line.
 
 Also you can use it directly on command line type the operation (-d). Don't forget "".:
     
     $ calc -d "5 * 2"
-    $ >> 10
+    $ 10
