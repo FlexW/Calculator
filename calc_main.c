@@ -76,8 +76,7 @@ mod()     Modulus divide\n\
       interactive_mode();
     }
     else {
-      printf("Unknown option. Try -h for help.\n");
-      exit(0);
+      interactive_mode();
     }
   }
 
@@ -87,12 +86,12 @@ mod()     Modulus divide\n\
 void interactive_mode ( ) {
 
   while (true) {
-    printf("<< ");
+    printf("> ");
     if (NULL == fgets(buffer, INPUT_BUF_SIZE, stdin)) {
       perror("fgets overflow");
       exit(1);
     }
     calculate(buffer, output, OUTPUT_BUF_SIZE);
-    printf(">> %s\n", output);
+    printf("%s\n", output);
   }
 }
