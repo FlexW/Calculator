@@ -29,7 +29,7 @@ Calculator handels this operations (spaces and tab and new lines will be ignored
     !         Factorial
     -         Unary minus
     ^         Exponent
-    mod()     Modulus divide 
+    %         Modulus divide 
     *, /      Multiply, Divide 
     +, -      Add, Subtract
 

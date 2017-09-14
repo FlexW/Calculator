@@ -12,7 +12,7 @@
 3   !         Factorial
 4   -         Unary minus
 5   ^         Exponent
-6   mod       Modulus divide (only integer)
+6   %         Modulus divide (only integer)
 7   *, /      Multiply, Divide (left-to-right precedence)
 8   +, -      Add, Subtract (left-to-right precedence)
 
@@ -122,6 +122,10 @@ static bool get_next_token(TOKEN *t) {
 
     case '/':
       t->token = DIV;
+      break;
+
+    case '%':
+      t->token = MOD;
       break;
 
     case '(':
@@ -246,7 +250,12 @@ static bool get_next_token(TOKEN *t) {
 	    printf("Illegal input.\n");
 	    exit(1);
 	  }
-	  curr_index = curr_index + 2;
+	  curr_index++;
+	  if (*(input + curr_index) != 'r') {
+	    printf("Illegal input.\n");
+	    exit(1);
+	  }
+	  curr_index++;
 	  if (*(input + curr_index) != 't') {
 	    printf("Illegal input.\n");
 	    exit(1);
